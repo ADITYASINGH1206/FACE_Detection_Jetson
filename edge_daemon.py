@@ -389,11 +389,15 @@ def create_source_bin(index, uri):
         uri_decode_bin = Gst.ElementFactory.make("uridecodebin", "uri-decode-bin")
         uri_decode_bin.set_property("uri", uri)
         uri_decode_bin.connect("pad-added", cb_newpad, nbin)
-        uri_decode_bin.connect(
-            "child-added",
-            lambda child_proxy, obj, name, user_data:
-                obj.set_property("drop-on-latency", True) if name.find("source") != -1 else None,
-            nbin)
+        
+        # Callback to force RTSP over TCP (fixes packet loss and the NVPARSER IRAP errors)
+        def cb_source_setup(element, source, user_data):
+            if source.get_factory().get_name() == 'rtspsrc':
+                source.set_property('protocols', 4) # 4 = GST_RTSP_LOWER_TRANS_TCP
+                source.set_property('latency', 100)
+                source.set_property('drop-on-latency', True)
+
+        uri_decode_bin.connect("source-setup", cb_source_setup, None)
         Gst.Bin.add(nbin, uri_decode_bin)
     else:
         v4l2src = Gst.ElementFactory.make("v4l2src", f"v4l2src_{index}")
