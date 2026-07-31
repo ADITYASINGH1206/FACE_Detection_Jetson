@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 DB_PATH = '/dev/shm/attendance.db'
 import os
 BACKEND_IP = os.getenv('BACKEND_IP', '192.168.1.7')
-API_URL = os.getenv('API_URL', f'http://{BACKEND_IP}:3000/api/v1/events/attendance')
+API_URL = os.getenv('API_URL', 'https://pink-mangos-yell.loca.lt/api/v1/events/attendance')
 API_KEY = 'JETSON_DEV_KEY'
 
 HEADERS = {
