@@ -15,7 +15,8 @@ API_KEY = 'JETSON_DEV_KEY'
 
 HEADERS = {
     'Content-Type': 'application/json',
-    'x-api-key': API_KEY
+    'x-api-key': API_KEY,
+    'Bypass-Tunnel-Reminder': 'true'
 }
 
 def sync_data():
