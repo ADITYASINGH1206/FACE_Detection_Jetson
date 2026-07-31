@@ -385,19 +385,39 @@ def create_source_bin(index, uri):
     bin_name = f"source-bin-{index}"
     nbin = Gst.Bin.new(bin_name)
 
-    if uri.startswith(("rtsp://", "http://", "https://", "file://")):
+    if uri.startswith("rtsp://"):
+        rtspsrc = Gst.ElementFactory.make("rtspsrc", f"rtspsrc_{index}")
+        rtspsrc.set_property("location", uri)
+        rtspsrc.set_property("latency", 100)
+        rtspsrc.set_property("protocols", 4) # TCP
+        
+        depay = Gst.ElementFactory.make("rtph265depay", f"depay_{index}")
+        parse = Gst.ElementFactory.make("h265parse", f"parse_{index}")
+        decoder = Gst.ElementFactory.make("nvv4l2decoder", f"decoder_{index}")
+        nvvidconv = Gst.ElementFactory.make("nvvideoconvert", f"nvvidconv_{index}")
+        capsfilter = Gst.ElementFactory.make("capsfilter", f"caps_{index}")
+        caps = Gst.Caps.from_string("video/x-raw(memory:NVMM), format=NV12")
+        capsfilter.set_property("caps", caps)
+
+        for elem in [rtspsrc, depay, parse, decoder, nvvidconv, capsfilter]:
+            Gst.Bin.add(nbin, elem)
+
+        def cb_rtspsrc_pad_added(src, pad, depay_elem):
+            sink_pad = depay_elem.get_static_pad("sink")
+            if not sink_pad.is_linked():
+                pad.link(sink_pad)
+
+        rtspsrc.connect("pad-added", cb_rtspsrc_pad_added, depay)
+
+        depay.link(parse)
+        parse.link(decoder)
+        decoder.link(nvvidconv)
+        nvvidconv.link(capsfilter)
+        
+    elif uri.startswith(("http://", "https://", "file://")):
         uri_decode_bin = Gst.ElementFactory.make("uridecodebin", "uri-decode-bin")
         uri_decode_bin.set_property("uri", uri)
         uri_decode_bin.connect("pad-added", cb_newpad, nbin)
-        
-        # Callback to force RTSP over TCP (fixes packet loss and the NVPARSER IRAP errors)
-        def cb_source_setup(element, source, user_data):
-            if source.get_factory().get_name() == 'rtspsrc':
-                source.set_property('protocols', 4) # 4 = GST_RTSP_LOWER_TRANS_TCP
-                source.set_property('latency', 100)
-                source.set_property('drop-on-latency', True)
-
-        uri_decode_bin.connect("source-setup", cb_source_setup, None)
         Gst.Bin.add(nbin, uri_decode_bin)
     else:
         v4l2src = Gst.ElementFactory.make("v4l2src", f"v4l2src_{index}")
@@ -415,7 +435,7 @@ def create_source_bin(index, uri):
         nvvidconv.link(capsfilter)
 
     bin_pad = nbin.add_pad(Gst.GhostPad.new_no_target("src", Gst.PadDirection.SRC))
-    if not uri.startswith(("rtsp://", "http://", "https://", "file://")):
+    if not uri.startswith(("http://", "https://", "file://")):
         nbin.get_static_pad("src").set_target(capsfilter.get_static_pad("src"))
 
     return nbin
