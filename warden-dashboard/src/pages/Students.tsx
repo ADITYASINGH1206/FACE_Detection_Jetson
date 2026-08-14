@@ -49,21 +49,21 @@ export default function Students() {
         {/* Header Area */}
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="font-headline-md text-2xl font-bold text-on-surface">Enrolled Students</h2>
-            <p className="text-on-surface-variant text-sm mt-1">Manage the database of registered resident profiles.</p>
+            <h2 className="font-semibold tracking-tight text-2xl font-bold text-zinc-900 dark:text-zinc-100">Enrolled Students</h2>
+            <p className="text-zinc-500 dark:text-zinc-400 text-sm mt-1">Manage the database of registered resident profiles.</p>
           </div>
-          <div className="glass-card px-4 py-2 rounded-xl flex items-center gap-2">
-            <Database size={16} className="text-primary" />
-            <span className="font-mono font-bold text-on-surface">{students.length} Total</span>
+          <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm px-4 py-2 rounded-xl flex items-center gap-2">
+            <Database size={16} className="text-zinc-900 dark:text-zinc-100" />
+            <span className="font-mono font-bold text-zinc-900 dark:text-zinc-100">{students.length} Total</span>
           </div>
         </div>
 
         {/* Search Area */}
-        <section className="w-full h-14 neu-inset bg-surface-container-lowest rounded-xl flex items-center px-4 gap-3 border border-outline-variant/10">
+        <section className="w-full h-14 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner bg-zinc-50 dark:bg-zinc-950 rounded-xl flex items-center px-4 gap-3 border border-zinc-200 dark:border-zinc-800">
           <Search className="text-outline" size={20} />
           <input 
             type="text"
-            className="bg-transparent border-none outline-none focus:ring-0 text-on-surface w-full font-body-md text-body-md placeholder:text-outline-variant" 
+            className="bg-transparent border-none outline-none focus:ring-0 text-zinc-900 dark:text-zinc-100 w-full  text-body-md placeholder:text-outline-variant" 
             placeholder="Search by name or ID..." 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -73,27 +73,27 @@ export default function Students() {
         {/* Directory List */}
         <section className="space-y-4">
           {loading ? (
-            <div className="text-center py-10 text-on-surface-variant animate-pulse">Loading database...</div>
+            <div className="text-center py-10 text-zinc-500 dark:text-zinc-400 animate-pulse">Loading database...</div>
           ) : filteredStudents.length === 0 ? (
-            <div className="text-center py-10 text-on-surface-variant bg-surface-container rounded-2xl border border-outline-variant/10">
+            <div className="text-center py-10 text-zinc-500 dark:text-zinc-400 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl border border-zinc-200 dark:border-zinc-800">
               No students found. Use the + button to enroll a new student.
             </div>
           ) : (
             filteredStudents.map((person) => (
-              <div key={person.id} className="glass-card bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/10 rounded-2xl p-margin-mobile flex items-center gap-4 transition-all duration-300">
-                <div className="w-14 h-14 rounded-full neu-inset flex items-center justify-center bg-primary-container text-on-primary-container font-bold text-xl uppercase">
+              <div key={person.id} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 border border-zinc-200 dark:border-zinc-800 rounded-2xl p-margin-mobile flex items-center gap-4 transition-all duration-300">
+                <div className="w-14 h-14 rounded-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner flex items-center justify-center bg-primary-container text-on-primary-container font-bold text-xl uppercase">
                   {person.full_name.charAt(0)}
                 </div>
                 <div className="flex-grow">
-                  <h3 className="font-headline-md text-[18px] text-on-surface font-semibold">{person.full_name}</h3>
+                  <h3 className="font-semibold tracking-tight text-[18px] text-zinc-900 dark:text-zinc-100 font-semibold">{person.full_name}</h3>
                   <div className="flex items-center gap-3 mt-1">
-                    <p className="font-mono text-label-md text-outline-variant bg-surface-container-highest px-2 py-0.5 rounded-md">{person.student_id}</p>
-                    <p className="font-label-md text-label-md text-outline">Room: {person.room_number}</p>
+                    <p className="font-mono text-label-md text-outline-variant bg-zinc-200 dark:bg-zinc-700 px-2 py-0.5 rounded-md">{person.student_id}</p>
+                    <p className="font-medium tracking-wide text-label-md text-outline">Room: {person.room_number}</p>
                   </div>
                 </div>
-                <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20`}>
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc/10 border border-zinc/20`}>
                   <span className={`w-1.5 h-1.5 rounded-full bg-secondary`}></span>
-                  <span className={`text-secondary font-label-md text-[10px] uppercase tracking-wider`}>{person.status}</span>
+                  <span className={`text-zinc-600 dark:text-zinc-300 font-medium tracking-wide text-[10px] uppercase tracking-wider`}>{person.status}</span>
                 </div>
               </div>
             ))

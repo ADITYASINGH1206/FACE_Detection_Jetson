@@ -53,25 +53,25 @@ export default function Attendance() {
 
       <main className="flex-1 px-margin-mobile max-w-4xl mx-auto w-full pt-stack-md">
         {/* Monthly Attendance Calendar */}
-        <section className="mb-stack-lg">
-          <div className="flex items-center justify-between mb-stack-md">
-            <h2 className="font-headline-md text-[24px] font-bold text-on-surface">
+        <section className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-semibold tracking-tight text-[24px] font-bold text-zinc-900 dark:text-zinc-100">
               {currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}
             </h2>
-            <div className="flex gap-stack-sm">
-              <button onClick={handlePrevMonth} className="w-8 h-8 rounded-lg flex items-center justify-center bg-surface neu-convex active:neu-inset transition-all">
-                <ChevronLeft size={20} className="text-on-surface" />
+            <div className="flex gap-2">
+              <button onClick={handlePrevMonth} className="w-8 h-8 rounded-lg flex items-center justify-center bg-white dark:bg-zinc-950 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl active:bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner transition-all">
+                <ChevronLeft size={20} className="text-zinc-900 dark:text-zinc-100" />
               </button>
-              <button onClick={handleNextMonth} className="w-8 h-8 rounded-lg flex items-center justify-center bg-surface neu-convex active:neu-inset transition-all">
-                <ChevronRight size={20} className="text-on-surface" />
+              <button onClick={handleNextMonth} className="w-8 h-8 rounded-lg flex items-center justify-center bg-white dark:bg-zinc-950 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl active:bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner transition-all">
+                <ChevronRight size={20} className="text-zinc-900 dark:text-zinc-100" />
               </button>
             </div>
           </div>
           
-          <div className="bg-surface-container-low rounded-xl p-4 neu-inset">
+          <div className="bg-zinc-50 dark:bg-zinc-950 rounded-xl p-4 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner">
             <div className="grid grid-cols-7 gap-2 mb-4">
               {['MO','TU','WE','TH','FR','SA','SU'].map((d, i) => (
-                <div key={d} className={`text-center font-label-md text-[12px] font-bold ${i === 6 ? 'text-error' : 'text-on-surface-variant'}`}>{d}</div>
+                <div key={d} className={`text-center font-medium tracking-wide text-[12px] font-bold ${i === 6 ? 'text-error' : 'text-zinc-500 dark:text-zinc-400'}`}>{d}</div>
               ))}
             </div>
             <div className="grid grid-cols-7 gap-2">
@@ -90,12 +90,12 @@ export default function Attendance() {
                   <button 
                     key={day} 
                     onClick={() => handleDateClick(day)}
-                    className={`h-10 rounded-lg flex items-center justify-center font-body-sm text-[14px] transition-all
+                    className={`h-10 rounded-lg flex items-center justify-center  text-[14px] transition-all
                       ${isSelected 
-                        ? 'font-bold text-primary neu-inset bg-surface-container-highest border border-primary/30' 
+                        ? 'font-bold text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner bg-zinc-200 dark:bg-zinc-700 border border-zinc/30' 
                         : isToday 
-                        ? 'text-secondary bg-surface neu-convex filter drop-shadow-[0_0_4px_rgba(0,223,197,0.5)] border border-secondary/20' 
-                        : 'text-on-surface-variant hover:bg-surface-container-high'}`}
+                        ? 'text-zinc-600 dark:text-zinc-300 bg-white dark:bg-zinc-950 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl filter drop-shadow-[0_0_4px_rgba(0,223,197,0.5)] border border-zinc/20' 
+                        : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:bg-zinc-800'}`}
                   >
                     {day}
                   </button>
@@ -106,21 +106,21 @@ export default function Attendance() {
         </section>
 
         {/* Daily Log List */}
-        <section className="mb-stack-lg">
-          <div className="flex items-center justify-between mb-stack-md">
-            <h2 className="font-headline-md text-[20px] font-bold text-on-surface">
+        <section className="mb-8">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="font-semibold tracking-tight text-[20px] font-bold text-zinc-900 dark:text-zinc-100">
               Logs for {selectedDate.toLocaleDateString()}
             </h2>
-            <div className="px-3 py-1 bg-surface-container rounded-lg font-mono text-xs text-on-surface-variant border border-outline-variant/10">
+            <div className="px-3 py-1 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg font-mono text-xs text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-800">
               {logs.length} RECORDS
             </div>
           </div>
           
           <div className="flex flex-col gap-4">
             {loading ? (
-              <div className="p-8 text-center text-on-surface-variant animate-pulse">Loading records...</div>
+              <div className="p-8 text-center text-zinc-500 dark:text-zinc-400 animate-pulse">Loading records...</div>
             ) : logs.length === 0 ? (
-              <div className="p-8 text-center bg-surface-container-low rounded-xl border border-outline-variant/10 text-on-surface-variant font-body-md">
+              <div className="p-8 text-center bg-zinc-50 dark:bg-zinc-950 rounded-xl border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 ">
                 No attendance events recorded for this date.
               </div>
             ) : (
@@ -128,20 +128,20 @@ export default function Attendance() {
                 const isEntry = log.direction === 'IN';
                 const timeStr = new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
                 return (
-                  <div key={log.id} className={`p-4 bg-surface rounded-xl neu-convex flex items-center gap-4 transition-transform ${log.is_late ? 'border-l-4 border-error' : 'border-l-4 border-transparent'}`}>
-                    <div className={`w-12 h-12 rounded-full neu-inset flex flex-col items-center justify-center ${isEntry ? 'bg-secondary/10 text-secondary' : 'bg-tertiary/10 text-tertiary'}`}>
+                  <div key={log.id} className={`p-4 bg-white dark:bg-zinc-950 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl flex items-center gap-4 transition-transform ${log.is_late ? 'border-l-4 border-error' : 'border-l-4 border-transparent'}`}>
+                    <div className={`w-12 h-12 rounded-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner flex flex-col items-center justify-center ${isEntry ? 'bg-secondary/10 text-zinc-600 dark:text-zinc-300' : 'bg-tertiary/10 text-zinc-500 dark:text-zinc-400'}`}>
                       {isEntry ? <ArrowDownRight size={20} /> : <ArrowUpRight size={20} />}
                     </div>
                     <div className="flex-1">
-                      <p className="font-body-md text-[16px] font-semibold text-on-surface">{log.student_name || 'Unknown'} <span className="text-xs font-mono font-normal text-on-surface-variant ml-2">({log.student_id})</span></p>
+                      <p className=" text-[16px] font-semibold text-zinc-900 dark:text-zinc-100">{log.student_name || 'Unknown'} <span className="text-xs font-mono font-normal text-zinc-500 dark:text-zinc-400 ml-2">({log.student_id})</span></p>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className={`font-label-md text-[10px] uppercase font-bold px-2 py-0.5 rounded ${isEntry ? 'bg-secondary/20 text-secondary' : 'bg-tertiary/20 text-tertiary'}`}>{isEntry ? 'ENTRY' : 'EXIT'}</span>
-                        <p className="font-mono text-[12px] text-on-surface-variant">{timeStr}</p>
-                        <span className="font-label-md text-[10px] uppercase text-outline-variant ml-2 tracking-widest">{log.camera_id ? `CAM-${log.camera_id}` : 'MANUAL'}</span>
+                        <span className={`font-medium tracking-wide text-[10px] uppercase font-bold px-2 py-0.5 rounded ${isEntry ? 'bg-secondary/20 text-zinc-600 dark:text-zinc-300' : 'bg-tertiary/20 text-zinc-500 dark:text-zinc-400'}`}>{isEntry ? 'ENTRY' : 'EXIT'}</span>
+                        <p className="font-mono text-[12px] text-zinc-500 dark:text-zinc-400">{timeStr}</p>
+                        <span className="font-medium tracking-wide text-[10px] uppercase text-outline-variant ml-2 tracking-widest">{log.camera_id ? `CAM-${log.camera_id}` : 'MANUAL'}</span>
                       </div>
                     </div>
                     {log.is_late && (
-                      <button className="px-3 py-2 rounded-lg bg-error/20 text-error font-label-md text-[10px] font-bold active:neu-inset transition-all">
+                      <button className="px-3 py-2 rounded-lg bg-error/20 text-error font-medium tracking-wide text-[10px] font-bold active:bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner transition-all">
                         {isEntry ? 'LATE ENTRY' : 'LATE EXIT'}
                       </button>
                     )}

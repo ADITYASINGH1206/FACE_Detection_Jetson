@@ -108,37 +108,37 @@ export default function Registration() {
 
   return (
     <>
-      <div className="flex flex-col gap-stack-lg min-h-[calc(100vh-120px)] relative">
+      <div className="flex flex-col gap-8 min-h-[calc(100vh-120px)] relative">
         <TopBar title="Resident Enrollment Gateway" />
 
         {/* Toast Notification Layer */}
         {toast && (
           <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
             <div className={`px-6 py-4 rounded-full flex items-center gap-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] border ${
-              toast.type === 'success' ? 'bg-secondary/20 border-secondary/50 text-secondary' :
-              toast.type === 'error' ? 'bg-error/20 border-error/50 text-error' :
-              'bg-primary/20 border-primary/50 text-primary'
+              toast.type === 'success' ? 'bg-secondary/20 border-secondary/50 text-zinc-600 dark:text-zinc-300' :
+              toast.type === 'error' ? 'bg-red/20 border-red/50 text-error' :
+              'bg-primary/20 border-primary/50 text-zinc-900 dark:text-zinc-100'
             } backdrop-blur-md`}>
               {toast.type === 'success' && <CheckCircle size={20} />}
               {toast.type === 'error' && <XCircle size={20} />}
               {toast.type === 'info' && <Info size={20} />}
-              <span className="font-headline-sm tracking-wide font-bold">{toast.message}</span>
+              <span className="font-semibold tracking-tight tracking-wide font-bold">{toast.message}</span>
             </div>
           </div>
         )}
 
-        <div className="flex-1 grid grid-cols-1 xl:grid-cols-2 gap-stack-xl px-margin-desktop py-stack-lg">
+        <div className="flex-1 grid grid-cols-1 xl:grid-cols-2 gap-stack-xl px-8 py-8">
           
           {/* COLUMN 1: ENROLLMENT FORM */}
-          <div className="w-full bg-surface-container rounded-3xl p-8 neu-convex border border-outline-variant/10 flex flex-col justify-between">
+          <div className="w-full bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
               {/* Form Header */}
               <div className="flex flex-col items-start mb-8">
-                <div className="w-16 h-16 rounded-full neu-inset bg-surface-container-lowest flex items-center justify-center text-primary mb-4 border border-primary/20">
+                <div className="w-16 h-16 rounded-full bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center text-zinc-900 dark:text-zinc-100 mb-4 border border-zinc/20">
                   <ShieldCheck size={32} />
                 </div>
-                <h2 className="font-headline-md text-3xl font-bold text-on-surface mb-2 tracking-tight">Identity Provisioning</h2>
-                <p className="font-body-md text-on-surface-variant">
+                <h2 className="font-semibold tracking-tight text-3xl font-bold text-zinc-900 dark:text-zinc-100 mb-2 tracking-tight">Identity Provisioning</h2>
+                <p className=" text-zinc-500 dark:text-zinc-400">
                   Register the resident, then initialize the hardware biometric capture process.
                 </p>
               </div>
@@ -146,12 +146,12 @@ export default function Registration() {
               {/* Registration Form */}
               <form onSubmit={handleRegister} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                  <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                     Legal Full Name
                   </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <UserPlus size={20} className="text-on-surface-variant group-focus-within:text-primary transition-colors" />
+                      <UserPlus size={20} className="text-zinc-500 dark:text-zinc-400 group-focus-within:text-zinc-900 dark:text-zinc-100 transition-colors" />
                     </div>
                     <input
                       type="text"
@@ -160,7 +160,7 @@ export default function Registration() {
                       disabled={isRegistered}
                       value={formData.full_name}
                       onChange={handleChange}
-                      className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface text-lg rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-on-surface-variant/50 disabled:opacity-50"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-zinc-500 dark:text-zinc-400/50 disabled:opacity-50"
                       placeholder="e.g. Eleanor Vance"
                     />
                   </div>
@@ -168,12 +168,12 @@ export default function Registration() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
-                    <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                    <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                       Student ID
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <Hash size={20} className="text-on-surface-variant group-focus-within:text-primary transition-colors" />
+                        <Hash size={20} className="text-zinc-500 dark:text-zinc-400 group-focus-within:text-zinc-900 dark:text-zinc-100 transition-colors" />
                       </div>
                       <input
                         type="text"
@@ -182,19 +182,19 @@ export default function Registration() {
                         disabled={isRegistered}
                         value={formData.student_id}
                         onChange={handleChange}
-                        className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface font-mono text-lg rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-on-surface-variant/50 disabled:opacity-50"
+                        className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 font-mono text-lg rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-zinc-500 dark:text-zinc-400/50 disabled:opacity-50"
                         placeholder="e.g. STU-802"
                       />
                     </div>
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                    <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                       Assigned Room
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <DoorOpen size={20} className="text-on-surface-variant group-focus-within:text-primary transition-colors" />
+                        <DoorOpen size={20} className="text-zinc-500 dark:text-zinc-400 group-focus-within:text-zinc-900 dark:text-zinc-100 transition-colors" />
                       </div>
                       <input
                         type="text"
@@ -203,7 +203,7 @@ export default function Registration() {
                         disabled={isRegistered}
                         value={formData.room_number}
                         onChange={handleChange}
-                        className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface text-lg font-mono rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-on-surface-variant/50 disabled:opacity-50"
+                        className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 text-lg font-mono rounded-2xl py-4 pl-12 pr-4 outline-none transition-all placeholder:text-zinc-500 dark:text-zinc-400/50 disabled:opacity-50"
                         placeholder="e.g. A-412"
                       />
                     </div>
@@ -215,7 +215,7 @@ export default function Registration() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full relative overflow-hidden group py-4 rounded-2xl bg-surface-container-highest text-on-surface font-headline-md text-lg font-bold flex items-center justify-center gap-3 shadow-md hover:bg-surface-container-highest/80 active:scale-[0.98] transition-all disabled:opacity-50"
+                      className="w-full relative overflow-hidden group py-4 rounded-2xl bg-zinc-200 dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight text-lg font-bold flex items-center justify-center gap-3 shadow-md hover:bg-zinc-200 dark:bg-zinc-700/80 active:scale-[0.98] transition-all disabled:opacity-50"
                     >
                       {isSubmitting ? <Cpu size={24} className="animate-pulse" /> : <UserPlus size={24} />}
                       REGISTER PROFILE
@@ -224,7 +224,7 @@ export default function Registration() {
                     <button
                       type="button"
                       disabled={true}
-                      className="w-full py-4 rounded-2xl bg-secondary/10 text-secondary border border-secondary/30 font-headline-md text-lg font-bold flex items-center justify-center gap-3"
+                      className="w-full py-4 rounded-2xl bg-secondary/10 text-zinc-600 dark:text-zinc-300 border border-zinc/30 font-semibold tracking-tight text-lg font-bold flex items-center justify-center gap-3"
                     >
                       <CheckCircle size={24} />
                       PROFILE REGISTERED
@@ -235,14 +235,14 @@ export default function Registration() {
             </div>
 
             {/* Hardware Trigger Section */}
-            <div className="mt-8 pt-8 border-t border-outline-variant/10">
+            <div className="mt-8 pt-8 border-t border-zinc-200 dark:border-zinc-800">
               <button
                 type="button"
                 disabled={!isRegistered || isScanning || enrollmentStatus === 'success'}
                 onClick={handleStartScan}
-                className={`w-full relative overflow-hidden group py-5 rounded-2xl font-headline-md text-xl font-bold flex flex-col items-center justify-center gap-1 transition-all ${
+                className={`w-full relative overflow-hidden group py-5 rounded-2xl font-semibold tracking-tight text-xl font-bold flex flex-col items-center justify-center gap-1 transition-all ${
                   !isRegistered 
-                    ? 'bg-surface-container-lowest text-on-surface-variant opacity-50 cursor-not-allowed'
+                    ? 'bg-zinc-50 dark:bg-zinc-950 text-zinc-500 dark:text-zinc-400 opacity-50 cursor-not-allowed'
                     : enrollmentStatus === 'success'
                     ? 'bg-secondary text-surface shadow-[0_0_20px_rgba(0,229,203,0.4)]'
                     : 'bg-primary-container text-on-primary-container shadow-[0_0_20px_rgba(203,190,255,0.2)] hover:shadow-[0_0_30px_rgba(203,190,255,0.4)] active:scale-[0.98]'
@@ -268,13 +268,13 @@ export default function Registration() {
 
           {/* COLUMN 2: LIVE MONITOR */}
           <div className="w-full flex flex-col gap-6">
-            <h2 className="font-headline-md text-2xl font-bold text-on-surface flex items-center gap-3">
-              <Camera className="text-primary" /> Live Feed Monitors
+            <h2 className="font-semibold tracking-tight text-2xl font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-3">
+              <Camera className="text-zinc-900 dark:text-zinc-100" /> Live Feed Monitors
             </h2>
             
             <div className="grid grid-rows-2 gap-6 h-full">
               {/* CAM 0 Feed */}
-              <div className="w-full h-full min-h-[250px] bg-black rounded-3xl overflow-hidden relative border border-outline-variant/20 shadow-lg group">
+              <div className="w-full h-full min-h-[250px] bg-black rounded-3xl overflow-hidden relative border border-zinc-200 dark:border-zinc-800 shadow-lg group">
                 <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
                   <span className="w-2 h-2 rounded-full bg-error animate-pulse"></span>
                   <span className="text-white font-mono text-xs font-bold tracking-wider">CAM_0_ENTRANCE</span>
@@ -287,7 +287,7 @@ export default function Registration() {
               </div>
 
               {/* CAM 1 Feed */}
-              <div className="w-full h-full min-h-[250px] bg-black rounded-3xl overflow-hidden relative border border-outline-variant/20 shadow-lg group">
+              <div className="w-full h-full min-h-[250px] bg-black rounded-3xl overflow-hidden relative border border-zinc-200 dark:border-zinc-800 shadow-lg group">
                 <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10">
                   <span className="w-2 h-2 rounded-full bg-error animate-pulse"></span>
                   <span className="text-white font-mono text-xs font-bold tracking-wider">CAM_1_EXIT</span>

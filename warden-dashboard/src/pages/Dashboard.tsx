@@ -122,19 +122,19 @@ export default function Dashboard() {
     <div className="flex flex-col min-h-screen pb-32">
       <TopBar title="Warden OS Command Center" />
       
-      <main className="p-margin-desktop min-h-screen max-w-[1440px] mx-auto w-full">
+      <main className="p-8 min-h-screen max-w-[1440px] mx-auto w-full">
         {toastMessage && (
           <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm px-6 py-3 rounded-full flex items-center gap-3 border border-secondary shadow-lg animate-fade-in">
             <CheckCircle2 className="text-zinc-600 dark:text-zinc-300" size={20} />
-            <span className="font-label-md text-zinc-900 dark:text-zinc-100">{toastMessage}</span>
+            <span className="font-medium tracking-wide text-zinc-900 dark:text-zinc-100">{toastMessage}</span>
           </div>
         )}
 
-        <div className="flex flex-col gap-gutter">
+        <div className="flex flex-col gap-6">
           
           {/* Header & Status */}
           <div className="flex items-center justify-between">
-            <h2 className="font-headline-md text-[28px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Real-Time Analytics</h2>
+            <h2 className="font-semibold tracking-tight text-[28px] font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">Real-Time Analytics</h2>
             <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl px-4 py-2 rounded-full flex items-center gap-2">
               <div className={`w-2.5 h-2.5 rounded-full ${socketConnected ? 'bg-secondary animate-pulse ' : 'bg-error'}`}></div>
               <span className="font-mono text-sm text-zinc-500 dark:text-zinc-400">
@@ -144,54 +144,54 @@ export default function Dashboard() {
           </div>
 
           {/* 4 Analytics Cards */}
-          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
-            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-stack-md border-l-4 border-primary hover:-translate-y-1 transition-transform">
-              <div className="flex items-center justify-between mb-unit">
-                <p className="text-label-md font-label-md text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Total Enrolled</p>
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-4 border-l-4 border-primary hover:-translate-y-1 transition-transform">
+              <div className="flex items-center justify-between mb-1">
+                <p className="text-label-md font-medium tracking-wide text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Total Enrolled</p>
                 <Users size={20} className="text-zinc-900 dark:text-zinc-100 " />
               </div>
-              <h3 className="font-headline-lg text-[36px] font-bold text-zinc-900 dark:text-zinc-100 mt-2">{stats.totalEnrolled}</h3>
+              <h3 className="font-semibold tracking-tight text-[36px] font-bold text-zinc-900 dark:text-zinc-100 mt-2">{stats.totalEnrolled}</h3>
             </div>
             
             <div 
               onClick={() => navigate('/analytics')}
-              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-stack-md border-l-4 border-secondary hover:-translate-y-1 transition-transform cursor-pointer"
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-4 border-l-4 border-secondary hover:-translate-y-1 transition-transform cursor-pointer"
             >
-              <div className="flex items-center justify-between mb-unit">
-                <p className="text-label-md font-label-md text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Currently Inside</p>
+              <div className="flex items-center justify-between mb-1">
+                <p className="text-label-md font-medium tracking-wide text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Currently Inside</p>
                 <Activity size={20} className="text-zinc-600 dark:text-zinc-300 " />
               </div>
-              <h3 className="font-headline-lg text-[36px] font-bold text-zinc-600 dark:text-zinc-300 mt-2">{stats.currentlyInside}</h3>
+              <h3 className="font-semibold tracking-tight text-[36px] font-bold text-zinc-600 dark:text-zinc-300 mt-2">{stats.currentlyInside}</h3>
             </div>
 
             <div 
               onClick={() => navigate('/analytics?filter=out')}
-              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-stack-md border-l-4 border-tertiary hover:-translate-y-1 transition-transform cursor-pointer"
+              className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-4 border-l-4 border-tertiary hover:-translate-y-1 transition-transform cursor-pointer"
             >
-              <div className="flex items-center justify-between mb-unit">
-                <p className="text-label-md font-label-md text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Currently Outside</p>
+              <div className="flex items-center justify-between mb-1">
+                <p className="text-label-md font-medium tracking-wide text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Currently Outside</p>
                 <ArrowUpRight size={20} className="text-zinc-500 dark:text-zinc-400 " />
               </div>
-              <h3 className="font-headline-lg text-[36px] font-bold text-zinc-500 dark:text-zinc-400 mt-2">{stats.currentlyOutside}</h3>
+              <h3 className="font-semibold tracking-tight text-[36px] font-bold text-zinc-500 dark:text-zinc-400 mt-2">{stats.currentlyOutside}</h3>
             </div>
 
-            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-stack-md border-l-4 border-error hover:-translate-y-1 transition-transform">
-              <div className="flex items-center justify-between mb-unit">
-                <p className="text-label-md font-label-md text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Late Entries Today</p>
+            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-4 border-l-4 border-error hover:-translate-y-1 transition-transform">
+              <div className="flex items-center justify-between mb-1">
+                <p className="text-label-md font-medium tracking-wide text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Late Entries Today</p>
                 <AlertCircle size={20} className="text-error animate-pulse " />
               </div>
-              <h3 className="font-headline-lg text-[36px] font-bold text-error mt-2">{stats.lateEntriesToday}</h3>
+              <h3 className="font-semibold tracking-tight text-[36px] font-bold text-error mt-2">{stats.lateEntriesToday}</h3>
             </div>
           </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-gutter mt-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
             
             {/* Left Column: Movement Log & Manual Entry */}
-            <div className="lg:col-span-2 flex flex-col gap-gutter">
+            <div className="lg:col-span-2 flex flex-col gap-6">
               
               {/* Manual Late Entry Form */}
-              <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-stack-lg border border-zinc-200 dark:border-zinc-800">
-                <h4 className="font-headline-md text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 flex items-center gap-2">
+              <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-8 border border-zinc-200 dark:border-zinc-800">
+                <h4 className="font-semibold tracking-tight text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 flex items-center gap-2">
                   <AlertCircle size={24} className="text-error" />
                   Log Manual Late Entry
                 </h4>
@@ -238,14 +238,14 @@ export default function Dashboard() {
               </section>
 
               {/* Movement Log Table */}
-              <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-stack-lg border border-zinc-200 dark:border-zinc-800 flex-1">
+              <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-8 border border-zinc-200 dark:border-zinc-800 flex-1">
                 <div className="flex items-center justify-between mb-6">
-                  <h4 className="font-headline-md text-xl font-bold text-zinc-900 dark:text-zinc-100">Live Movement Feed</h4>
+                  <h4 className="font-semibold tracking-tight text-xl font-bold text-zinc-900 dark:text-zinc-100">Live Movement Feed</h4>
                 </div>
                 <div className="overflow-x-auto custom-scrollbar">
                   <table className="w-full text-left border-collapse min-w-[600px]">
                     <thead>
-                      <tr className="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 font-label-md uppercase tracking-widest text-[11px]">
+                      <tr className="border-b border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 font-medium tracking-wide uppercase tracking-widest text-[11px]">
                         <th className="pb-4 px-4 font-bold">Status</th>
                         <th className="pb-4 px-4 font-bold">Student</th>
                         <th className="pb-4 px-4 font-bold">Time</th>
@@ -262,8 +262,8 @@ export default function Dashboard() {
                             <td className="py-3 px-4">
                               <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-[10px] font-bold ${
                                 isEntry 
-                                  ? 'bg-secondary/10 text-zinc-600 dark:text-zinc-300 border border-secondary/20 drop-shadow-[0_0_4px_rgba(0,229,203,0.3)]' 
-                                  : 'bg-error/10 text-error border border-error/20 drop-shadow-[0_0_4px_rgba(255,50,50,0.3)]'
+                                  ? 'bg-secondary/10 text-zinc-600 dark:text-zinc-300 border border-zinc/20 drop-shadow-[0_0_4px_rgba(0,229,203,0.3)]' 
+                                  : 'bg-red/10 text-error border border-red/20 drop-shadow-[0_0_4px_rgba(255,50,50,0.3)]'
                               }`}>
                                 {isEntry ? <ArrowDownRight size={12} /> : <ArrowUpRight size={12} />}
                                 {isEntry ? 'IN' : 'OUT'}
@@ -283,7 +283,7 @@ export default function Dashboard() {
                             </td>
                             <td className="py-3 px-4">
                               <div className="flex items-center gap-2">
-                                <div className="w-16 h-1 bg-background rounded-full overflow-hidden">
+                                <div className="w-16 h-1 bg-zinc-50 dark:bg-zinc-950 rounded-full overflow-hidden">
                                   <div 
                                     className={`h-full rounded-full ${log.similarity_score > 0.8 ? 'bg-secondary' : 'bg-tertiary'}`} 
                                     style={{ width: `${Math.min(100, log.similarity_score * 100)}%` }}
@@ -306,10 +306,10 @@ export default function Dashboard() {
 
             {/* Right Column: Warden Notification Feed */}
             <div className="lg:col-span-1">
-              <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-stack-lg border border-error/20 h-full flex flex-col relative overflow-hidden">
+              <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-8 border border-red/20 h-full flex flex-col relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-error/0 via-error to-error/0 opacity-50"></div>
                 
-                <h4 className="font-headline-md text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 flex items-center gap-2">
+                <h4 className="font-semibold tracking-tight text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 flex items-center gap-2">
                   <AlertCircle size={20} className="text-error" />
                   Recent Alerts
                 </h4>
@@ -321,10 +321,10 @@ export default function Dashboard() {
                     </div>
                   ) : (
                     lateLogs.map(log => (
-                      <div key={log.id} className="p-4 rounded-2xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl border border-error/10 hover:border-error/30 transition-colors">
+                      <div key={log.id} className="p-4 rounded-2xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl border border-red/10 hover:border-red/30 transition-colors">
                         <div className="flex justify-between items-start mb-2">
                           <span className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">{log.student_name || 'Unknown'}</span>
-                          <span className="text-[10px] font-mono font-bold bg-error/10 text-error px-2 py-0.5 rounded-full border border-error/20">
+                          <span className="text-[10px] font-mono font-bold bg-red/10 text-error px-2 py-0.5 rounded-full border border-red/20">
                             {log.direction === 'OUT' ? 'LATE EXIT' : 'LATE ENTRY'}
                           </span>
                         </div>

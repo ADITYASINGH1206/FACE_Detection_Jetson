@@ -140,20 +140,20 @@ export default function Settings() {
     <div className="flex flex-col min-h-screen pb-32">
       <TopBar title="System Settings & Developer Tools" />
       
-      <main className="p-margin-desktop min-h-screen max-w-[1440px] mx-auto w-full">
+      <main className="p-8 min-h-screen max-w-[1440px] mx-auto w-full">
         
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-stack-xl">
           
           {/* HARDWARE SIMULATOR */}
-          <section className="glass-card rounded-3xl p-stack-lg border border-outline-variant/30 flex flex-col justify-between">
+          <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-8 border border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
             <div>
               <div className="flex items-start gap-4 mb-8">
-                <div className="p-3 bg-primary/10 text-primary rounded-xl border border-primary/20">
+                <div className="p-3 bg-primary/10 text-zinc-900 dark:text-zinc-100 rounded-xl border border-zinc/20">
                   <Cpu size={24} />
                 </div>
                 <div>
-                  <h3 className="font-headline-sm text-xl font-bold text-on-surface">Hardware Event Simulator</h3>
-                  <p className="text-on-surface-variant font-body-md mt-1">
+                  <h3 className="font-semibold tracking-tight text-xl font-bold text-zinc-900 dark:text-zinc-100">Hardware Event Simulator</h3>
+                  <p className="text-zinc-500 dark:text-zinc-400  mt-1">
                     Manually inject an attendance event into the system exactly as if the Jetson Nano camera detected a face.
                   </p>
                 </div>
@@ -161,17 +161,17 @@ export default function Settings() {
 
               <form onSubmit={handleSimulateEvent} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                  <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                     Target Student
                   </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Users size={20} className="text-on-surface-variant" />
+                      <Users size={20} className="text-zinc-500 dark:text-zinc-400" />
                     </div>
                     <select
                       value={simData.student_id}
                       onChange={(e) => setSimData({...simData, student_id: e.target.value})}
-                      className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface text-lg rounded-2xl py-4 pl-12 pr-4 outline-none appearance-none"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-2xl py-4 pl-12 pr-4 outline-none appearance-none"
                     >
                       {students.map(s => (
                         <option key={s.student_id} value={s.student_id}>{s.full_name} ({s.student_id})</option>
@@ -183,17 +183,17 @@ export default function Settings() {
 
                 <div className="flex gap-6">
                   <div className="flex-1 flex flex-col gap-2">
-                    <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                    <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                       Camera (0=IN, 1=OUT)
                     </label>
                     <div className="relative group">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <Camera size={20} className="text-on-surface-variant" />
+                        <Camera size={20} className="text-zinc-500 dark:text-zinc-400" />
                       </div>
                       <select
                         value={simData.camera_id}
                         onChange={(e) => setSimData({...simData, camera_id: Number(e.target.value)})}
-                        className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface text-lg rounded-2xl py-4 pl-12 pr-4 outline-none appearance-none"
+                        className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-2xl py-4 pl-12 pr-4 outline-none appearance-none"
                         disabled={simData.is_late_entry}
                       >
                         <option value={0}>Camera 0 (Entrance)</option>
@@ -203,10 +203,10 @@ export default function Settings() {
                   </div>
 
                   <div className="flex-1 flex flex-col gap-2">
-                    <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                    <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                       Confidence Score
                     </label>
-                    <div className="h-[60px] bg-surface-container-lowest neu-inset rounded-2xl px-4 flex items-center gap-4">
+                    <div className="h-[60px] bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner rounded-2xl px-4 flex items-center gap-4">
                       <input 
                         type="range" 
                         min="0.1" max="1.0" step="0.05"
@@ -215,52 +215,52 @@ export default function Settings() {
                         className="w-full accent-primary"
                         disabled={simData.is_late_entry}
                       />
-                      <span className="font-mono text-primary font-bold">{simData.similarity_score.toFixed(2)}</span>
+                      <span className="font-mono text-zinc-900 dark:text-zinc-100 font-bold">{simData.similarity_score.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
                 
                 <div className="flex flex-col gap-2">
-                  <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                  <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                     Custom Event Time (Leave empty for Now)
                   </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Clock size={20} className="text-on-surface-variant" />
+                      <Clock size={20} className="text-zinc-500 dark:text-zinc-400" />
                     </div>
                     <input
                       type="datetime-local"
                       value={simData.custom_time}
                       onChange={(e) => setSimData({...simData, custom_time: e.target.value})}
-                      className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface text-lg rounded-2xl py-4 pl-12 pr-4 outline-none"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-2xl py-4 pl-12 pr-4 outline-none"
                     />
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-surface-container-low p-4 rounded-2xl border border-outline-variant/10">
+                <div className="flex items-center gap-3 bg-zinc-50 dark:bg-zinc-950 p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800">
                   <input 
                     type="checkbox" 
                     id="lateEntry"
                     checked={simData.is_late_entry}
                     onChange={(e) => setSimData({...simData, is_late_entry: e.target.checked})}
-                    className="w-5 h-5 rounded accent-primary bg-surface-container-highest border-transparent focus:ring-primary focus:ring-2 focus:ring-offset-2"
+                    className="w-5 h-5 rounded accent-primary bg-zinc-200 dark:bg-zinc-700 border-transparent focus:ring-primary focus:ring-2 focus:ring-offset-2"
                   />
-                  <label htmlFor="lateEntry" className="font-label-md text-[14px] text-on-surface cursor-pointer">
+                  <label htmlFor="lateEntry" className="font-medium tracking-wide text-[14px] text-zinc-900 dark:text-zinc-100 cursor-pointer">
                     Simulate Warden Manual Late Entry (Forces Telegram Alert)
                   </label>
                 </div>
 
                 {simMsg.text && (
-                  <div className={`p-4 rounded-xl flex items-center gap-3 border ${simMsg.error ? 'bg-error/10 text-error border-error/20' : 'bg-secondary/10 text-secondary border-secondary/20'}`}>
+                  <div className={`p-4 rounded-xl flex items-center gap-3 border ${simMsg.error ? 'bg-error/10 text-error border-error/20' : 'bg-secondary/10 text-zinc-600 dark:text-zinc-300 border-zinc/20'}`}>
                     {simMsg.error ? <AlertTriangle size={20} /> : <CheckCircle size={20} />}
-                    <span className="font-label-md">{simMsg.text}</span>
+                    <span className="font-medium tracking-wide">{simMsg.text}</span>
                   </div>
                 )}
 
                 <button 
                   type="submit"
                   disabled={simulating || students.length === 0}
-                  className="w-full mt-2 py-4 rounded-2xl bg-primary-container text-on-primary-container font-headline-md text-lg font-bold flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(203,190,255,0.2)] hover:shadow-[0_0_30px_rgba(203,190,255,0.4)] active:scale-[0.98] transition-all disabled:opacity-50"
+                  className="w-full mt-2 py-4 rounded-2xl bg-primary-container text-on-primary-container font-semibold tracking-tight text-lg font-bold flex items-center justify-center gap-3 shadow-[0_0_20px_rgba(203,190,255,0.2)] hover:shadow-[0_0_30px_rgba(203,190,255,0.4)] active:scale-[0.98] transition-all disabled:opacity-50"
                 >
                   {simulating ? <Loader2 size={24} className="animate-spin" /> : <Send size={24} />}
                   TRIGGER MOCK EVENT
@@ -271,14 +271,14 @@ export default function Settings() {
 
           <div className="flex flex-col gap-stack-xl">
             {/* GLOBAL CONFIG */}
-            <section className="glass-card rounded-3xl p-stack-lg border border-outline-variant/30 h-fit">
+            <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-8 border border-zinc-200 dark:border-zinc-800 h-fit">
               <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-tertiary/10 text-tertiary rounded-xl border border-tertiary/20">
+                <div className="p-3 bg-tertiary/10 text-zinc-500 dark:text-zinc-400 rounded-xl border border-zinc/20">
                   <SettingsIcon size={24} />
                 </div>
                 <div>
-                  <h3 className="font-headline-sm text-xl font-bold text-on-surface">Global Configuration</h3>
-                  <p className="text-on-surface-variant font-body-md mt-1">
+                  <h3 className="font-semibold tracking-tight text-xl font-bold text-zinc-900 dark:text-zinc-100">Global Configuration</h3>
+                  <p className="text-zinc-500 dark:text-zinc-400  mt-1">
                     Set system-wide thresholds for alerts.
                   </p>
                 </div>
@@ -287,7 +287,7 @@ export default function Settings() {
               <form onSubmit={handleSaveSettings} className="flex flex-col gap-6">
                 <div className="flex gap-6">
                   <div className="flex-1 flex flex-col gap-2">
-                    <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                    <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                       Late Arrival Start Hour (0-23)
                     </label>
                     <input
@@ -295,11 +295,11 @@ export default function Settings() {
                       min="0" max="23"
                       value={globalSettings.LATE_HOUR_START}
                       onChange={(e) => setGlobalSettings({...globalSettings, LATE_HOUR_START: parseInt(e.target.value)})}
-                      className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-tertiary/50 text-on-surface text-lg rounded-2xl py-4 px-4 outline-none"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-tertiary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-2xl py-4 px-4 outline-none"
                     />
                   </div>
                   <div className="flex-1 flex flex-col gap-2">
-                    <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                    <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                       Late Arrival End Hour (0-23)
                     </label>
                     <input
@@ -307,22 +307,22 @@ export default function Settings() {
                       min="0" max="23"
                       value={globalSettings.LATE_HOUR_END}
                       onChange={(e) => setGlobalSettings({...globalSettings, LATE_HOUR_END: parseInt(e.target.value)})}
-                      className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-tertiary/50 text-on-surface text-lg rounded-2xl py-4 px-4 outline-none"
+                      className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-tertiary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-2xl py-4 px-4 outline-none"
                     />
                   </div>
                 </div>
 
                 {settingsMsg.text && (
-                  <div className={`p-4 rounded-xl flex items-center gap-3 border ${settingsMsg.error ? 'bg-error/10 text-error border-error/20' : 'bg-tertiary/10 text-tertiary border-tertiary/20'}`}>
+                  <div className={`p-4 rounded-xl flex items-center gap-3 border ${settingsMsg.error ? 'bg-error/10 text-error border-error/20' : 'bg-tertiary/10 text-zinc-500 dark:text-zinc-400 border-zinc/20'}`}>
                     {settingsMsg.error ? <AlertTriangle size={20} /> : <CheckCircle size={20} />}
-                    <span className="font-label-md">{settingsMsg.text}</span>
+                    <span className="font-medium tracking-wide">{settingsMsg.text}</span>
                   </div>
                 )}
 
                 <button 
                   type="submit"
                   disabled={savingSettings}
-                  className="w-full py-4 rounded-2xl bg-surface-container-high text-on-surface font-headline-md text-[16px] font-bold flex items-center justify-center gap-3 border border-outline-variant/20 hover:bg-surface-container-highest active:neu-inset transition-all disabled:opacity-50"
+                  className="w-full py-4 rounded-2xl bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-semibold tracking-tight text-[16px] font-bold flex items-center justify-center gap-3 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-200 dark:bg-zinc-700 active:bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner transition-all disabled:opacity-50"
                 >
                   {savingSettings ? <Loader2 size={20} className="animate-spin" /> : <CheckCircle size={20} />}
                   SAVE SETTINGS
@@ -331,30 +331,30 @@ export default function Settings() {
             </section>
 
             {/* BULK DB TOOLS */}
-            <section className="glass-card rounded-3xl p-stack-lg border border-outline-variant/30 h-fit">
+            <section className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-sm rounded-3xl p-8 border border-zinc-200 dark:border-zinc-800 h-fit">
               <div className="flex items-start gap-4 mb-6">
-                <div className="p-3 bg-error/10 text-error rounded-xl border border-error/20">
+                <div className="p-3 bg-red/10 text-error rounded-xl border border-red/20">
                   <Database size={24} />
                 </div>
                 <div>
-                  <h3 className="font-headline-sm text-xl font-bold text-on-surface">Database Reset & Mock Seed</h3>
-                  <p className="text-on-surface-variant font-body-md mt-1">
+                  <h3 className="font-semibold tracking-tight text-xl font-bold text-zinc-900 dark:text-zinc-100">Database Reset & Mock Seed</h3>
+                  <p className="text-zinc-500 dark:text-zinc-400  mt-1">
                     Warning: This will wipe all logs and replace them with a set of 5 mock students and realistic test logs.
                   </p>
                 </div>
               </div>
 
               {seedMsg.text && (
-                <div className={`p-4 rounded-xl mb-6 flex items-center gap-3 border ${seedMsg.error ? 'bg-error/10 text-error border-error/20' : 'bg-secondary/10 text-secondary border-secondary/20'}`}>
+                <div className={`p-4 rounded-xl mb-6 flex items-center gap-3 border ${seedMsg.error ? 'bg-error/10 text-error border-error/20' : 'bg-secondary/10 text-zinc-600 dark:text-zinc-300 border-zinc/20'}`}>
                   {seedMsg.error ? <AlertTriangle size={20} /> : <CheckCircle size={20} />}
-                  <span className="font-label-md">{seedMsg.text}</span>
+                  <span className="font-medium tracking-wide">{seedMsg.text}</span>
                 </div>
               )}
 
               <button 
                 onClick={handleSeedData}
                 disabled={seeding}
-                className="glass-button bg-error/10 border-error/30 text-error hover:bg-error/20 px-6 py-4 rounded-xl font-bold flex items-center gap-2 transition-all disabled:opacity-50 w-full justify-center"
+                className="bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 active:scale-[0.98] bg-red/10 border-error/30 text-error hover:bg-red/20 px-6 py-4 rounded-xl font-bold flex items-center gap-2 transition-all disabled:opacity-50 w-full justify-center"
               >
                 {seeding ? <Loader2 size={18} className="animate-spin" /> : <AlertTriangle size={18} />}
                 {seeding ? 'Seeding Database...' : 'WIPE & SEED MOCK DATA'}

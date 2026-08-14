@@ -75,27 +75,27 @@ export default function DeviceRegistry() {
 
   return (
     <>
-      <div className="flex flex-col gap-stack-lg min-h-screen pb-32">
+      <div className="flex flex-col gap-8 min-h-screen pb-32">
         <TopBar title="Hardware Architecture Registry" />
 
-        <div className="flex-1 px-margin-desktop w-full max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+        <div className="flex-1 px-8 w-full max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
           
           {/* Left Side: Registration Form */}
           <div className="lg:col-span-4">
-            <div className="bg-surface-container rounded-3xl p-stack-lg neu-convex border border-outline-variant/10 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-              <div className="flex items-center gap-3 mb-stack-lg">
-                <div className="w-12 h-12 rounded-xl bg-surface-container-low neu-inset flex items-center justify-center text-primary">
+            <div className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner flex items-center justify-center text-zinc-900 dark:text-zinc-100">
                   <Box size={24} />
                 </div>
                 <div>
-                  <h3 className="font-headline-md text-xl font-bold text-on-surface">Provision Node</h3>
-                  <p className="font-label-md text-on-surface-variant text-[12px] uppercase tracking-widest mt-1">Deploy Hardware Gate</p>
+                  <h3 className="font-semibold tracking-tight text-xl font-bold text-zinc-900 dark:text-zinc-100">Provision Node</h3>
+                  <p className="font-medium tracking-wide text-zinc-500 dark:text-zinc-400 text-[12px] uppercase tracking-widest mt-1">Deploy Hardware Gate</p>
                 </div>
               </div>
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="flex flex-col gap-2">
-                  <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                  <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                     Hardware Payload ID (camera_id)
                   </label>
                   <input
@@ -104,13 +104,13 @@ export default function DeviceRegistry() {
                     required
                     value={formData.device_id}
                     onChange={handleChange}
-                    className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface font-mono text-lg rounded-xl py-4 px-4 outline-none transition-all placeholder:text-on-surface-variant/50"
+                    className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 font-mono text-lg rounded-xl py-4 px-4 outline-none transition-all placeholder:text-zinc-500 dark:text-zinc-400/50"
                     placeholder="e.g. 0 or 1"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                  <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                     System Alias Name
                   </label>
                   <input
@@ -119,13 +119,13 @@ export default function DeviceRegistry() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface text-lg rounded-xl py-4 px-4 outline-none transition-all placeholder:text-on-surface-variant/50"
+                    className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-xl py-4 px-4 outline-none transition-all placeholder:text-zinc-500 dark:text-zinc-400/50"
                     placeholder="e.g. Main Entry Gate"
                   />
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="font-label-md text-[12px] font-bold text-on-surface-variant uppercase tracking-widest pl-2">
+                  <label className="font-medium tracking-wide text-[12px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-widest pl-2">
                     Directional Logic Role
                   </label>
                   <select
@@ -133,7 +133,7 @@ export default function DeviceRegistry() {
                     required
                     value={formData.role}
                     onChange={handleChange}
-                    className="w-full bg-surface-container-lowest neu-inset border border-transparent focus:border-primary/50 text-on-surface text-lg rounded-xl py-4 px-4 outline-none transition-all cursor-pointer"
+                    className="w-full bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner border border-transparent focus:border-primary/50 text-zinc-900 dark:text-zinc-100 text-lg rounded-xl py-4 px-4 outline-none transition-all cursor-pointer"
                   >
                     <option value="IN">ENTRY GATE (IN)</option>
                     <option value="OUT">EXIT GATE (OUT)</option>
@@ -143,7 +143,7 @@ export default function DeviceRegistry() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="mt-4 w-full py-4 rounded-xl bg-primary-container text-on-primary-container font-headline-sm font-bold flex items-center justify-center gap-3 hover:scale-[1.02] active:neu-inset active:scale-[0.98] transition-all disabled:opacity-50"
+                  className="mt-4 w-full py-4 rounded-xl bg-primary-container text-on-primary-container font-semibold tracking-tight font-bold flex items-center justify-center gap-3 hover:scale-[1.02] active:bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner active:scale-[0.98] transition-all disabled:opacity-50"
                 >
                   <PlusCircle size={20} />
                   REGISTER DEVICE
@@ -154,43 +154,43 @@ export default function DeviceRegistry() {
 
           {/* Right Side: Active Devices Table */}
           <div className="lg:col-span-8">
-            <div className="bg-surface-container rounded-3xl p-stack-lg neu-convex border border-outline-variant/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] h-full">
-              <div className="flex items-center justify-between mb-stack-lg">
+            <div className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-[0_0_40px_rgba(0,0,0,0.5)] h-full">
+              <div className="flex items-center justify-between mb-8">
                 <div className="flex items-center gap-3">
-                  <Network className="text-secondary" size={24} />
-                  <h3 className="font-headline-md text-2xl font-bold text-on-surface">Active Sensor Grid</h3>
+                  <Network className="text-zinc-600 dark:text-zinc-300" size={24} />
+                  <h3 className="font-semibold tracking-tight text-2xl font-bold text-zinc-900 dark:text-zinc-100">Active Sensor Grid</h3>
                 </div>
-                <div className="px-4 py-2 bg-surface-container-lowest neu-inset rounded-lg flex items-center gap-2">
-                  <Activity className="text-secondary" size={16} />
-                  <span className="font-label-md text-[12px] text-on-surface-variant font-bold tracking-widest">{devices.length} NODES LINKED</span>
+                <div className="px-4 py-2 bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner rounded-lg flex items-center gap-2">
+                  <Activity className="text-zinc-600 dark:text-zinc-300" size={16} />
+                  <span className="font-medium tracking-wide text-[12px] text-zinc-500 dark:text-zinc-400 font-bold tracking-widest">{devices.length} NODES LINKED</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {devices.length === 0 ? (
-                  <div className="col-span-full py-12 text-center text-on-surface-variant font-body-md bg-surface-container-low neu-inset rounded-2xl">
+                  <div className="col-span-full py-12 text-center text-zinc-500 dark:text-zinc-400  bg-zinc-50 dark:bg-zinc-950 bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-inner rounded-2xl">
                     No hardware nodes deployed yet.
                   </div>
                 ) : (
                   devices.map((device) => (
-                    <div key={device.id} className="p-stack-md bg-surface-container-low neu-convex rounded-2xl flex flex-col gap-4 border border-outline-variant/5">
+                    <div key={device.id} className="p-4 bg-zinc-50 dark:bg-zinc-950 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl rounded-2xl flex flex-col gap-4 border border-zinc-200 dark:border-zinc-800">
                       <div className="flex justify-between items-start">
                         <div className="flex flex-col">
-                          <span className="font-headline-sm text-[18px] font-bold text-on-surface">{device.name}</span>
-                          <span className="font-mono text-[12px] text-on-surface-variant mt-1">ID: {device.device_id}</span>
+                          <span className="font-semibold tracking-tight text-[18px] font-bold text-zinc-900 dark:text-zinc-100">{device.name}</span>
+                          <span className="font-mono text-[12px] text-zinc-500 dark:text-zinc-400 mt-1">ID: {device.device_id}</span>
                         </div>
                         <div className="flex flex-col items-end gap-2">
-                          <span className={`px-2 py-1 rounded-[4px] text-[10px] font-bold tracking-widest ${device.role === 'IN' ? 'bg-secondary/20 text-secondary' : 'bg-error/20 text-error'}`}>
+                          <span className={`px-2 py-1 rounded-[4px] text-[10px] font-bold tracking-widest ${device.role === 'IN' ? 'bg-secondary/20 text-zinc-600 dark:text-zinc-300' : 'bg-red/20 text-error'}`}>
                             {device.role} GATE
                           </span>
                           <div className="flex items-center gap-3 mt-1">
-                            <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-on-surface uppercase">
+                            <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-zinc-900 dark:text-zinc-100 uppercase">
                               <div className="w-2 h-2 rounded-full bg-secondary drop-shadow-[0_0_4px_rgba(0,229,203,0.8)]"></div>
                               {device.status}
                             </span>
                             <button
                               onClick={() => handleDelete(device.id)}
-                              className="text-on-surface-variant hover:text-error transition-colors bg-surface-container-highest p-1.5 rounded-md hover:bg-error/10 active:scale-95"
+                              className="text-zinc-500 dark:text-zinc-400 hover:text-error transition-colors bg-zinc-200 dark:bg-zinc-700 p-1.5 rounded-md hover:bg-red/10 active:scale-95"
                               title="Delete Device"
                             >
                               <Trash2 size={14} />
@@ -198,7 +198,7 @@ export default function DeviceRegistry() {
                           </div>
                         </div>
                       </div>
-                      <div className="w-full bg-surface-container-highest rounded-full h-1 mt-auto">
+                      <div className="w-full bg-zinc-200 dark:bg-zinc-700 rounded-full h-1 mt-auto">
                         <div className={`h-full rounded-full ${device.role === 'IN' ? 'bg-secondary' : 'bg-error'}`} style={{ width: '100%' }}></div>
                       </div>
                     </div>

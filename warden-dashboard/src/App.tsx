@@ -24,7 +24,7 @@ export const App: React.FC = () => {
           <Route path="students/register" element={<Registration />} />
           <Route path="devices" element={<DeviceRegistry />} />
           <Route path="analytics" element={<Analytics />} />
-          <Route path="insights" element={<div className="p-8"><h1 className="text-2xl text-primary">System Health Coming Soon</h1></div>} />
+          <Route path="insights" element={<div className="p-8"><h1 className="text-2xl text-zinc-900 dark:text-zinc-100">System Health Coming Soon</h1></div>} />
           <Route path="settings" element={<Settings />} />
         </Route>
         <Route path="/login" element={<Login />} />
