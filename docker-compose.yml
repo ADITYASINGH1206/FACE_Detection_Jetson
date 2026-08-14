@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./attendance-express-backend
+      dockerfile: Dockerfile
+    container_name: campus-backend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    env_file:
+      - ./attendance-express-backend/.env
+    # We map port 3000 on the host to 3000 in the container.
+    # It reads Supabase, Redis, and Telegram credentials from the .env file
+
+  frontend:
+    build:
+      context: ./warden-dashboard
+      dockerfile: Dockerfile
+    container_name: campus-frontend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    # Depending on how the frontend handles API calls (if it uses relative or absolute URLs),
+    # ensure any necessary ENV variables like VITE_API_URL are set inside the frontend's .env file.
+    # If using absolute, the frontend needs to know the backend's public IP.
