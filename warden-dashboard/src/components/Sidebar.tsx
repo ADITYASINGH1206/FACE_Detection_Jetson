@@ -13,15 +13,15 @@ const navItems = [
 
 export const Sidebar: React.FC = () => {
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 glass-lg flex flex-col py-stack-lg gap-stack-md z-50">
-      <div className="px-margin-desktop mb-stack-lg">
+    <aside className="fixed left-0 top-0 h-screen w-64 bg-white dark:bg-zinc-950 border-r border-zinc-200 dark:border-zinc-800 flex flex-col py-8 gap-4 z-50">
+      <div className="px-8 mb-8">
         <img 
           alt="OneKByte Labs Logo" 
-          className="h-36 w-auto object-contain"
+          className="h-10 w-auto object-contain dark:invert"
           src="/newlogoonekbyte.png"
         />
-        <div className="mt-stack-sm flex items-center gap-stack-sm">
-          <div className="w-10 h-10 rounded-full glass-sm flex items-center justify-center overflow-hidden">
+        <div className="mt-8 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 flex items-center justify-center overflow-hidden">
             <img 
               alt="Admin Avatar" 
               className="w-full h-full object-cover" 
@@ -29,48 +29,48 @@ export const Sidebar: React.FC = () => {
             />
           </div>
           <div>
-            <p className="font-label-md text-label-md text-on-surface">System Controller</p>
-            <p className="text-[10px] text-primary opacity-70">V2.4 Active</p>
+            <p className="font-medium tracking-wide text-xs text-zinc-900 dark:text-zinc-100">System Controller</p>
+            <p className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono">V2.4 Active</p>
           </div>
         </div>
       </div>
       
-      <nav className="flex flex-col gap-unit px-stack-md">
+      <nav className="flex flex-col gap-1 px-4">
         {navItems.map((item) => (
           <NavLink 
             key={item.path}
             to={item.path}
             className={({ isActive }) => 
-              `flex items-center gap-stack-md px-stack-md py-stack-md rounded-xl transition-all duration-300 active:scale-95 ` +
+              `flex items-center gap-4 px-4 py-3 rounded-lg transition-all duration-200 active:scale-[0.98] ` +
               (isActive 
-                ? `glass-button text-primary` 
-                : `text-on-surface-variant hover:text-primary hover:glass-sm`)
+                ? `bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium shadow-sm` 
+                : `text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800`)
             }
           >
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>{item.icon}</span>
-            <span className="font-label-md">{item.label}</span>
+            <span className="font-medium text-sm tracking-wide">{item.label}</span>
           </NavLink>
         ))}
 
-        <div className="mt-auto pt-stack-lg border-t border-outline-variant/10">
+        <div className="mt-auto pt-6 border-t border-zinc-200 dark:border-zinc-800">
           <NavLink 
             to="/settings"
             className={({ isActive }) => 
-              `flex items-center gap-stack-md px-stack-md py-stack-md rounded-xl transition-all duration-300 active:scale-95 ` +
+              `flex items-center gap-4 px-4 py-3 rounded-lg transition-all duration-200 active:scale-[0.98] ` +
               (isActive 
-                ? `glass-button text-primary` 
-                : `text-on-surface-variant hover:text-primary hover:glass-sm`)
+                ? `bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-medium shadow-sm` 
+                : `text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800`)
             }
           >
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>settings</span>
-            <span className="font-label-md">Settings</span>
+            <span className="font-medium text-sm tracking-wide">Settings</span>
           </NavLink>
           <NavLink 
             to="/login"
-            className="flex items-center gap-stack-md px-stack-md py-stack-md rounded-xl text-on-surface-variant hover:text-error hover:glass-button transition-all duration-300 active:scale-95"
+            className="flex items-center gap-4 px-4 py-3 rounded-lg text-zinc-500 dark:text-zinc-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 transition-all duration-200 active:scale-[0.98]"
           >
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>logout</span>
-            <span className="font-label-md">Logout</span>
+            <span className="font-medium text-sm tracking-wide">Logout</span>
           </NavLink>
         </div>
       </nav>

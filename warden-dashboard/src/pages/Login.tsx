@@ -159,7 +159,7 @@ export const Login: React.FC = () => {
               {/* Glass Container */}
               <motion.div
                 animate={step === 'loading' ? { boxShadow: '0 0 20px rgba(255, 140, 66, 0.3)' } : {}}
-                className="relative backdrop-blur-[20px] bg-white/5 rounded-3xl p-stack-lg border border-white/20 transition-all"
+                className="relative backdrop-blur-[20px] bg-white/5 rounded-3xl p-8 border border-white/20 transition-all"
                 style={{
                   boxShadow: step === 'loading' || step === 'error' 
                     ? '0 0 20px rgba(255, 140, 66, 0.3)' 
@@ -173,9 +173,9 @@ export const Login: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
-                    className="flex flex-col gap-unit"
+                    className="flex flex-col gap-1"
                   >
-                    <label className="font-label-md text-label-md text-on-surface ml-stack-sm mb-1">
+                    <label className="font-medium tracking-wide text-label-md text-zinc-900 dark:text-zinc-100 ml-stack-sm mb-1">
                       Email Address
                     </label>
                     <div className="relative group">
@@ -186,16 +186,16 @@ export const Login: React.FC = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         onKeyDown={handleEmailSubmit}
                         placeholder="system_controller_01@onekbyte.com"
-                        className="w-full h-12 px-12 backdrop-blur-sm bg-white/5 rounded-2xl font-body-md text-on-surface border border-white/15 focus:outline-none focus:ring-2 focus:ring-white/40 focus:bg-white/8 transition-all placeholder:text-on-surface/50"
+                        className="w-full h-12 px-12 backdrop-blur-sm bg-white/5 rounded-2xl  text-zinc-900 dark:text-zinc-100 border border-white/15 focus:outline-none focus:ring-2 focus:ring-white/40 focus:bg-white/8 transition-all placeholder:text-zinc-900 dark:text-zinc-100/50"
                       />
                       <span 
-                        className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface text-xl opacity-60 transition-opacity" 
+                        className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-zinc-900 dark:text-zinc-100 text-xl opacity-60 transition-opacity" 
                         style={{ fontVariationSettings: "'FILL' 1" }}
                       >
                         mail
                       </span>
                     </div>
-                    <p className="text-xs text-on-surface/50 ml-stack-sm">Press Enter to continue</p>
+                    <p className="text-xs text-zinc-900 dark:text-zinc-100/50 ml-stack-sm">Press Enter to continue</p>
                   </motion.div>
                 )}
 
@@ -206,28 +206,28 @@ export const Login: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.4 }}
-                    className="flex flex-col gap-stack-md"
+                    className="flex flex-col gap-4"
                   >
                     {/* Email Summary */}
-                    <div className="flex items-center gap-stack-sm px-unit py-unit rounded-xl bg-white/5 border border-white/10">
+                    <div className="flex items-center gap-2 px-unit py-1 rounded-xl bg-white/5 border border-white/10">
                       <span 
-                        className="material-symbols-outlined text-on-surface text-lg opacity-70" 
+                        className="material-symbols-outlined text-zinc-900 dark:text-zinc-100 text-lg opacity-70" 
                         style={{ fontVariationSettings: "'FILL' 1" }}
                       >
                         mail
                       </span>
-                      <span className="text-body-sm text-on-surface truncate flex-1">{email}</span>
+                      <span className="text-body-sm text-zinc-900 dark:text-zinc-100 truncate flex-1">{email}</span>
                       <button
                         onClick={() => setStep('email')}
-                        className="text-primary hover:text-primary-container transition-colors"
+                        className="text-zinc-900 dark:text-zinc-100 hover:text-zinc-900 dark:text-zinc-100-container transition-colors"
                       >
                         <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 0" }}>edit</span>
                       </button>
                     </div>
 
                     {/* Password Input */}
-                    <div className="flex flex-col gap-unit">
-                      <label className="font-label-md text-label-md text-on-surface ml-stack-sm mb-1">
+                    <div className="flex flex-col gap-1">
+                      <label className="font-medium tracking-wide text-label-md text-zinc-900 dark:text-zinc-100 ml-stack-sm mb-1">
                         Password
                       </label>
                       <div className="relative group">
@@ -238,16 +238,16 @@ export const Login: React.FC = () => {
                           onChange={(e) => setPassword(e.target.value)}
                           onKeyDown={handlePasswordSubmit}
                           placeholder="••••••••••••"
-                          className="w-full h-12 px-12 backdrop-blur-sm bg-white/5 rounded-2xl font-body-md text-on-surface border border-white/15 focus:outline-none focus:ring-2 focus:ring-white/40 focus:bg-white/8 transition-all placeholder:text-on-surface/50"
+                          className="w-full h-12 px-12 backdrop-blur-sm bg-white/5 rounded-2xl  text-zinc-900 dark:text-zinc-100 border border-white/15 focus:outline-none focus:ring-2 focus:ring-white/40 focus:bg-white/8 transition-all placeholder:text-zinc-900 dark:text-zinc-100/50"
                         />
                         <span 
-                          className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface text-xl opacity-60" 
+                          className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-zinc-900 dark:text-zinc-100 text-xl opacity-60" 
                           style={{ fontVariationSettings: "'FILL' 1" }}
                         >
                           lock
                         </span>
                       </div>
-                      <p className="text-xs text-on-surface/50 ml-stack-sm">Press Enter to authenticate</p>
+                      <p className="text-xs text-zinc-900 dark:text-zinc-100/50 ml-stack-sm">Press Enter to authenticate</p>
                     </div>
 
                     {/* Error Message */}
@@ -258,7 +258,7 @@ export const Login: React.FC = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           transition={{ duration: 0.3 }}
-                          className="flex items-center gap-stack-sm px-unit py-unit rounded-lg bg-red-500/10 border border-red-500/30"
+                          className="flex items-center gap-2 px-unit py-1 rounded-lg bg-red-500/10 border border-red-500/30"
                         >
                           <span 
                             className="material-symbols-outlined text-red-400 text-lg" 
@@ -280,16 +280,16 @@ export const Login: React.FC = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="flex flex-col items-center gap-stack-lg py-stack-lg"
+                    className="flex flex-col items-center gap-8 py-8"
                   >
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                       className="w-12 h-12 rounded-full border-2 border-white/20 border-t-white/50"
                     />
-                    <div className="flex flex-col items-center gap-unit">
-                      <p className="font-label-md text-on-surface">Authenticating</p>
-                      <p className="text-body-xs text-on-surface/60">Verifying credentials...</p>
+                    <div className="flex flex-col items-center gap-1">
+                      <p className="font-medium tracking-wide text-zinc-900 dark:text-zinc-100">Authenticating</p>
+                      <p className="text-body-xs text-zinc-900 dark:text-zinc-100/60">Verifying credentials...</p>
                     </div>
                   </motion.div>
                 )}
@@ -306,7 +306,7 @@ export const Login: React.FC = () => {
             initial="initial"
             whileHover="hover"
             whileTap="tap"
-            className="absolute bottom-3 left-1/2 -translate-x-1/2 w-80 h-16 backdrop-blur-sm bg-gradient-to-r from-white/8 to-white/5 rounded-3xl font-headline-md text-on-surface border border-white/15 hover:from-white/12 hover:to-white/8 transition-all flex items-center justify-center gap-stack-sm z-20"
+            className="absolute bottom-3 left-1/2 -translate-x-1/2 w-80 h-16 backdrop-blur-sm bg-gradient-to-r from-white/8 to-white/5 rounded-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 border border-white/15 hover:from-white/12 hover:to-white/8 transition-all flex items-center justify-center gap-2 z-20"
             style={{
               boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.15)',
               backdropFilter: 'blur(10px)'
@@ -329,7 +329,7 @@ export const Login: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center gap-stack-lg"
+            className="flex flex-col items-center gap-8"
           >
             <motion.div
               animate={{ scale: [1, 1.1, 1] }}
@@ -348,7 +348,7 @@ export const Login: React.FC = () => {
             <motion.p
               animate={{ opacity: [0, 1] }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="font-label-lg text-on-surface"
+              className="font-medium tracking-wide text-zinc-900 dark:text-zinc-100"
             >
               Welcome back!
             </motion.p>
