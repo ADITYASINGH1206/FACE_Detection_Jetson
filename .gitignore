@@ -57,3 +57,6 @@ image_db/
 attendance-express-backend/server.log
 attendance.csv
 log.txt
+
+# Claude Code configs
+.claude/
