@@ -43,3 +43,12 @@ known_faces/
 
 # Gemini Agents config
 .agents/
+
+# Local Deployment Guides
+DOCKER_DEPLOYMENT_GUIDE.md
+JETSON_DEPLOYMENT_LOG.md
+RENDER_VERCEL_DEPLOYMENT.md
+
+# Local Image DB and Assets
+image_db/
+*.jpg
