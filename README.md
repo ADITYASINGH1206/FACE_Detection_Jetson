@@ -353,11 +353,7 @@ FACE_Detection_Jetson/
 │   ├── fix_onnx.py                 # YOLOv8 PyTorch → ONNX export (opset 11, fixed batch)
 │   ├── fix_mbf_batch.py            # MobileFaceNet ONNX static → dynamic batch conversion
 │   │
-│   └── image_db/                   # Face photo database (3-4 images per subject)
-│       ├── Aniket/
-│       ├── Raj/
-│       ├── aditya/
-│       └── sharad/
+│   └── image_db/                   # Face photo database (git ignored)
 │
 ├── 🔧 TESTING & DIAGNOSTICS
 │   └── test_fps_no_model.py        # Raw camera FPS benchmark (pipeline without AI models)
@@ -408,7 +404,10 @@ FACE_Detection_Jetson/
 │   └── package.json
 │
 ├── .gitignore
-├── SETUP_GUIDE.md                      # Deployment & installation manual
+├── docs/                               # Documentation
+│   ├── ARCHITECTURE_DEEP_DIVE.md
+│   ├── JETSON_SETUP.md
+│   └── SETUP_GUIDE.md
 └── README.md                           # This file
 ```
 
@@ -463,7 +462,7 @@ FACE_Detection_Jetson/
 
 ## Getting Started
 
-For complete deployment instructions, see **[SETUP_GUIDE.md](SETUP_GUIDE.md)**.
+For complete deployment instructions, see **[docs/SETUP_GUIDE.md](docs/SETUP_GUIDE.md)**.
 
 ### Quick Start Overview
 
