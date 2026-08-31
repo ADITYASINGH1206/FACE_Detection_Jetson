@@ -123,7 +123,7 @@ models/
 ├── yolov8n-face.onnx                          # YOLOv8n-face detector (ONNX, opset 11)
 ├── yolov8n-face.onnx_b2_gpu0_fp16.engine      # Auto-built by TensorRT on first run
 ├── w600k_mbf.onnx                              # MobileFaceNet original (static batch)
-├── w600k_mbf_dynamic.onnx                      # Dynamic batch version (use fix_mbf_batch.py)
+├── w600k_mbf_dynamic.onnx                      # Dynamic batch version (use tools/fix_mbf_batch.py)
 └── w600k_mbf_dynamic.onnx_b8_gpu0_fp16.engine  # Auto-built by TensorRT on first run
 ```
 
@@ -133,7 +133,7 @@ models/
 # Convert MobileFaceNet to dynamic batch (required for SGIE batch-size=8)
 source venv/bin/activate
 pip install onnx
-python3 fix_mbf_batch.py --input models/w600k_mbf.onnx --output models/w600k_mbf_dynamic.onnx
+python3 tools/fix_mbf_batch.py --input models/w600k_mbf.onnx --output models/w600k_mbf_dynamic.onnx
 deactivate
 ```
 
@@ -142,7 +142,7 @@ deactivate
 ```bash
 source venv/bin/activate
 pip install ultralytics
-python3 fix_onnx.py    # Exports yolov8n-face.pt → yolov8n-face.onnx (opset 11, batch=16)
+python3 tools/fix_onnx.py    # Exports yolov8n-face.pt → yolov8n-face.onnx (opset 11, batch=16)
 deactivate
 ```
 
@@ -903,10 +903,10 @@ Use the included FPS benchmarking tool to measure raw camera throughput without 
 
 ```bash
 # System Python (no venv)
-python3 test_fps_no_model.py /dev/video0
+python3 tools/test_fps_no_model.py /dev/video0
 
 # Dual camera benchmark
-python3 test_fps_no_model.py /dev/video0 /dev/video1
+python3 tools/test_fps_no_model.py /dev/video0 /dev/video1
 ```
 
 This runs the GStreamer pipeline with `nvstreammux → nvmultistreamtiler → nvdsosd → nveglglessink` (skipping PGIE/Tracker/SGIE), giving you the hardware ceiling FPS for your camera and display setup.
