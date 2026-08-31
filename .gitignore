@@ -52,3 +52,11 @@ RENDER_VERCEL_DEPLOYMENT.md
 # Local Image DB and Assets
 image_db/
 *.jpg
+
+# Log files and runtime output
+attendance-express-backend/server.log
+attendance.csv
+log.txt
+
+# Claude Code configs
+.claude/
