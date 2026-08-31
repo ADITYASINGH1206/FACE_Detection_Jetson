@@ -337,7 +337,6 @@ FACE_Detection_Jetson/
 │   ├── db_utils.py                 # SQLite ORM: embeddings storage, loading, attendance logging
 │   ├── edge_bridge.py              # Isolated network sync daemon (HTTP POST to backend)
 │   ├── edge_server.py              # Flask MJPEG streaming server (port 5001)
-│   ├── cloud_utils.py              # Legacy direct-HTTP cloud logger (background thread queue)
 │   │
 │   ├── configs/
 │   │   ├── pgie_config.txt         # YOLOv8n-face PGIE: TensorRT FP16, custom NMS parser
@@ -350,13 +349,16 @@ FACE_Detection_Jetson/
 │
 ├── 🎓 ENROLLMENT PIPELINE
 │   ├── enroll_trt.py               # Auto-enrollment: multi-angle averaging + idempotency
-│   ├── fix_onnx.py                 # YOLOv8 PyTorch → ONNX export (opset 11, fixed batch)
-│   ├── fix_mbf_batch.py            # MobileFaceNet ONNX static → dynamic batch conversion
+│   │
+│   └── tools/
+│       ├── fix_onnx.py             # YOLOv8 PyTorch → ONNX export (opset 11, fixed batch)
+│       └── fix_mbf_batch.py        # MobileFaceNet ONNX static → dynamic batch conversion
 │   │
 │   └── image_db/                   # Face photo database (git ignored)
 │
 ├── 🔧 TESTING & DIAGNOSTICS
-│   └── test_fps_no_model.py        # Raw camera FPS benchmark (pipeline without AI models)
+│   └── tools/
+│       └── test_fps_no_model.py    # Raw camera FPS benchmark (pipeline without AI models)
 │
 ├── ☁️ CLOUD BACKEND (attendance-express-backend/)
 │   ├── src/
